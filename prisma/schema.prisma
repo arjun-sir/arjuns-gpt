@@ -18,3 +18,23 @@ model User {
     @@index([id])
     @@map("users")
 }
+
+model Chats {
+    id        String   @id @default(uuid())
+    userID    String
+    createdAt DateTime @default(now()) @map("created_at")
+
+    @@index([id])
+    @@map("chats")
+}
+
+model Messages {
+    id        String   @id @default(uuid())
+    chatID    String
+    query     String
+    response  String
+    createdAt DateTime @default(now()) @map("created_at")
+
+    @@index([id])
+    @@map("messages")
+}

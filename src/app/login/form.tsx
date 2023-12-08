@@ -4,35 +4,89 @@ import React from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export default function LoginForm() {
-  const supabase = createClientComponentClient();
+	const supabase = createClientComponentClient();
 
-  //   console.log(`${window.location.origin}/auth/callback`);
+	//   console.log(`${window.location.origin}/auth/callback`);
 
-  const handleLoginWithGoogle = () => {
-    supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-  };
+	const handleLoginWithGoogle = () => {
+		supabase.auth.signInWithOAuth({
+			provider: "google",
+			options: {
+				redirectTo: `${window.location.origin}/auth/callback`,
+			},
+		});
+	};
 
-  return (
-    <div className=" flex h-screen w-full items-center justify-center">
-      <div className="w-96 space-y-3 rounded-sm border p-5 shadow-sm">
-        <h1 className=" text-lg font-bold">{"Welcome to Daily's AI"}</h1>
-        <p className="text-sm">
-          {
-            " It is platform that build using Supabase and Chatgpt's API to create a ChatGPT like that can answer with our own knowledeg base."
-          }
-        </p>
-        <button
-          className="w-full bg-indigo-500"
-          onClick={handleLoginWithGoogle}
-        >
-          Login With Github
-        </button>
-      </div>
-    </div>
-  );
+	const input_style =
+		"form-control block w-full px-4 py-5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
+
+	return (
+		<form>
+			{/* Email input field */}
+			<div className="mb-6">
+				<input
+					required
+					type="email"
+					name="email"
+					placeholder="Email address"
+					className={`${input_style}`}
+				/>
+			</div>
+
+			{/* Password input field */}
+			<div className="mb-6">
+				<input
+					required
+					type="password"
+					name="password"
+					placeholder="Password"
+					className={`${input_style}`}
+				/>
+			</div>
+
+			{/* Sign In button */}
+			<button
+				type="submit"
+				className="inline-block w-full rounded bg-blue-600 px-7 py-4 text-sm font-medium uppercase leading-snug text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+			>
+				Sign in
+			</button>
+
+			{/* OR divider */}
+			<div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-gray-300 after:mt-0.5 after:flex-1 after:border-t after:border-gray-300">
+				<p className="mx-4 mb-0 text-center font-semibold">OR</p>
+			</div>
+
+			{/* Sign In with Google button */}
+			<a
+				className="mb-3 flex w-full items-center justify-center rounded px-7 py-2 text-sm font-medium uppercase leading-snug text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+				style={{ backgroundColor: "#ffffff", color: "gray" }}
+				onClick={handleLoginWithGoogle}
+				role="button"
+			>
+				<img
+					className="pr-2"
+					src="/images/google.svg"
+					alt=""
+					style={{ height: "2rem" }}
+				/>
+				Continue with Google
+			</a>
+
+			{/* Sign In with GitHub button */}
+			<a
+				className="flex w-full items-center justify-center rounded px-7 py-2 text-sm font-medium uppercase leading-snug text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+				style={{ backgroundColor: "#000000" }}
+				role="button"
+			>
+				<img
+					className="pr-2"
+					src="/images/github.png"
+					alt=""
+					style={{ height: "2.2rem" }}
+				/>
+				Continue with GitHub
+			</a>
+		</form>
+	);
 }
