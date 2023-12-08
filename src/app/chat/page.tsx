@@ -13,6 +13,9 @@ export default async function ChatPage() {
 		where: {
 			userID: data.session?.user.id,
 		},
+		orderBy: {
+			userID: "desc",
+		},
 	});
 
 	return (
