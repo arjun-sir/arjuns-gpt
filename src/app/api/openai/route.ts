@@ -21,6 +21,8 @@ export async function POST(request: Request) {
 			prompt: `${prompt}`,
 		});
 
+		console.log(completion);
+
 		if (chatID !== null && prompt !== null) {
 			await prisma.messages.create({
 				data: {
