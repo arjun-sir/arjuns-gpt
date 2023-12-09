@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Loader from "./loader";
 
 type messPropsType = {
 	chatID: string;
@@ -24,7 +25,12 @@ export default function MessageInterface(this: any, props: messPropsType) {
 			});
 	}, [isLoading === true]);
 
-	if (isLoading === true || isLoading === null) return <p>Loading...</p>;
+	if (isLoading === true || isLoading === null)
+		return (
+			<div className="w-[75vw] h-[100vh]">
+				<Loader />
+			</div>
+		);
 
 	async function getGPTresponse(
 		event: React.FormEvent

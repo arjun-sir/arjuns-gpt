@@ -4,6 +4,7 @@ import { Router } from "next/router";
 import React, { useEffect, useState } from "react";
 import MessageInterface from "./messageInterface";
 import { Button } from "@/components/ui/button";
+import Loader from "./loader";
 
 export default function ChatInterface() {
 	const [chats, setChats] = useState<any[]>([]);
@@ -35,7 +36,12 @@ export default function ChatInterface() {
 			});
 	}, [isLoading === true]);
 
-	if (isLoading === true || isLoading === null) return <p>Loading...</p>;
+	if (isLoading === true || isLoading === null)
+		return (
+			<div className="h-screen w-screen">
+				<Loader />
+			</div>
+		);
 	// if (!chats) return <p>No chats</p>;
 
 	return (
