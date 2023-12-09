@@ -17,7 +17,7 @@ export default function ChatInterface() {
 		});
 		if (response.status === 200) {
 			setLoading(true);
-			setSelected("");
+			// setSelected("");
 		}
 	}
 
@@ -85,7 +85,7 @@ export default function ChatInterface() {
 					</div>
 				</div>
 				{selected !== "" ? (
-					<MessageInterface chatID={selected} />
+					<MessageInterface key={selected} chatID={selected} />
 				) : (
 					<div></div>
 				)}
