@@ -6,7 +6,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 export default function LoginForm() {
 	const supabase = createClientComponentClient();
 
-	//   console.log(`${window.location.origin}/auth/callback`);
+	console.log(`${window.location.origin}/auth/callback`);
 
 	const handleLoginWithGoogle = () => {
 		supabase.auth.signInWithOAuth({
