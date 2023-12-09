@@ -83,7 +83,13 @@ export default function MessageInterface(this: any, props: messPropsType) {
 				</div>
 			</div>
 			<div className="h-[10vh] bg-gray-100">
-				<form>
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+						e.stopPropagation();
+						getGPTresponse(e);
+					}}
+				>
 					<div>
 						<input
 							className="border border-black w-[65vw] mx-[5vw] mb-8 rounded-md py-4 px-2 absolute bottom-0 pr-[5vw]"
