@@ -49,19 +49,23 @@ export default function MessageInterface(props: messPropsType) {
 				</div>
 			</div>
 			<div className="h-[10vh] bg-gray-100">
-				<form action="">
+				<form action="/api/openai" method="POST">
 					<div className="">
 						<input
 							className="border border-black w-[65vw] mx-[5vw] mb-8 rounded-md py-4 px-2 absolute bottom-0 pr-[5vw]"
 							type="text"
-							name=""
+							name="prompt"
 							id=""
 							placeholder="Ask a question..."
+						/>
+						<input
+							type="hidden"
+							name="chatID"
+							value={props.chatID}
 						/>
 						<button
 							className="z-20 mx-[5vw] mb-8 rounded-md py-4 px-2 absolute bottom-0 right-0"
 							type="submit"
-							name=""
 							id=""
 						>
 							Submit
