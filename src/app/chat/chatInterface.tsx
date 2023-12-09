@@ -7,11 +7,12 @@ import { Button } from "@/components/ui/button";
 
 export default function ChatInterface() {
 	const [chats, setChats] = useState<any[]>([]);
-	const [isLoading, setLoading] = useState(true);
+	const [isLoading, setLoading] = useState<any>(true);
 	const [selected, setSelected] = useState("");
 	var i = 0;
 
 	async function createNewChat(): Promise<void> {
+		setLoading(null);
 		const response = await fetch("/api/createChat", {
 			method: "POST",
 			body: JSON.stringify({}),
@@ -32,9 +33,9 @@ export default function ChatInterface() {
 				}
 				setLoading(false);
 			});
-	}, [isLoading]);
+	}, [isLoading === true]);
 
-	if (isLoading) return <p>Loading...</p>;
+	if (isLoading === true || isLoading === null) return <p>Loading...</p>;
 	// if (!chats) return <p>No chats</p>;
 
 	return (

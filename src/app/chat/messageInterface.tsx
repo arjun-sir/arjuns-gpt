@@ -8,7 +8,7 @@ export default function MessageInterface(this: any, props: messPropsType) {
 	console.log("message ran");
 	const [messgs, setMessgs] = useState<any[]>([]);
 	const [inputPrompt, setInputPrompt] = useState<string>("");
-	const [isLoading, setLoading] = useState(true);
+	const [isLoading, setLoading] = useState<any>(true);
 
 	useEffect(() => {
 		fetch("/api/getMessages?chatID=" + props.chatID)
@@ -22,14 +22,14 @@ export default function MessageInterface(this: any, props: messPropsType) {
 				}
 				setLoading(false);
 			});
-	}, [isLoading]);
+	}, [isLoading === true]);
 
-	if (isLoading) return <p>Loading...</p>;
+	if (isLoading === true || isLoading === null) return <p>Loading...</p>;
 
 	async function getGPTresponse(
 		event: React.FormEvent
 	): Promise<React.FormEventHandler<HTMLFormElement> | undefined> {
-		setLoading(true);
+		setLoading(null);
 		const response = await fetch(
 			"/api/openai?prompt=" + inputPrompt + "&chatID=" + props.chatID,
 			{
