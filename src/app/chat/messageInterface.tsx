@@ -27,7 +27,7 @@ export default function MessageInterface(this: any, props: messPropsType) {
 
 	if (isLoading === true || isLoading === null)
 		return (
-			<div className="w-[75vw] h-[100vh]">
+			<div className="w-full h-[100vh]">
 				<Loader />
 			</div>
 		);
@@ -55,7 +55,7 @@ export default function MessageInterface(this: any, props: messPropsType) {
 		<div>
 			<div
 				id="chat"
-				className="bg-gray-100 w-[75vw] h-[90vh] overflow-y-scroll"
+				className="bg-gray-100 w-full h-[90vh] overflow-y-scroll"
 			>
 				<div className="w-[70%] ml-[10%] mt-8 space-y-4 mb-[50vh]">
 					{messgs.map(
