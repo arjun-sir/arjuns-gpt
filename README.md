@@ -1,18 +1,17 @@
-# Create T3 App
+# Arjun's GPT 🦁
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## About this Project
 
-## What's next? How do I make an app with this?
+Arjun's GPT is a chatbot that reluctantly answers questions with sarcastic responses. He thinks Arjun is the best web developer to ever exist. The chatbot is live on Vercel <a href="https://arjuns-gpt.vercel.app/" target="_blank">here</a>.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Built With:
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+This is a T3 Stack project bootstrapped with create-t3-app.
 
 - [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
 - [Prisma](https://prisma.io)
+- [Supabase](https://supabase.com/)
 - [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
 
 ## Learn More
 
@@ -23,6 +22,7 @@ To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the fo
 
 You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
 
-## How do I deploy this?
+## Contact
+***Arjun Khanna***
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+Email: [arjunkhanna0108@gmail.com](mailto:arjunkhanna0108@gmail.com)
