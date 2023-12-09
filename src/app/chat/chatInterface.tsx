@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import MessageInterface from "./messageInterface";
 import { Button } from "@/components/ui/button";
 import Loader from "./loader";
+import { MdDelete } from "react-icons/md";
+import { IoMdAddCircle } from "react-icons/io";
 
 export default function ChatInterface() {
 	const [chats, setChats] = useState<any[]>([]);
@@ -15,6 +17,18 @@ export default function ChatInterface() {
 	async function createNewChat(): Promise<void> {
 		setLoading(null);
 		const response = await fetch("/api/createChat", {
+			method: "POST",
+			body: JSON.stringify({}),
+		});
+		if (response.status === 200) {
+			setLoading(true);
+			// setSelected("");
+		}
+	}
+
+	async function deleteChat(delChatID: string): Promise<void> {
+		setLoading(null);
+		const response = await fetch("/api/deleteChat?chatID=" + delChatID, {
 			method: "POST",
 			body: JSON.stringify({}),
 		});
@@ -59,23 +73,27 @@ export default function ChatInterface() {
 								onClick={createNewChat}
 							>
 								{/* <i className="fa-solid fa-square-plus"></i>  */}
-								<p
+
+								<div
 									style={{ whiteSpace: "nowrap" }}
-									className="overflow-hidden mx-4"
+									className="overflow-hidden mx-4 flex items-center gap-2"
 								>
-									<i className="fa-regular fa-pen-to-square"></i>{" "}
-									New Chat
-								</p>
+									<div className="">
+										<IoMdAddCircle />
+									</div>
+									<p>New Chat</p>
+								</div>
 							</div>
 							{chats.map((element: { id: string }) => {
 								i++;
+
 								return (
 									<div
 										key={element.id}
 										onClick={() => setSelected(element.id)}
 										id="message-preview"
 										className={
-											` text-white w-inherit h-[50px] flex justify-start items-center hover:bg-gray-600 z-10 rounded-lg overflow-hidden ` +
+											` text-white w-inherit h-[50px] flex justify-between items-center hover:bg-gray-600 z-10 rounded-lg overflow-hidden ` +
 											(selected === element.id
 												? "bg-gray-600"
 												: "")
@@ -87,6 +105,14 @@ export default function ChatInterface() {
 										>
 											Chat no. {chats.length - i + 1}
 										</p>
+										<button
+											className="pr-4 z-50"
+											onClick={() =>
+												deleteChat(element.id)
+											}
+										>
+											<MdDelete />
+										</button>
 									</div>
 								);
 							})}
