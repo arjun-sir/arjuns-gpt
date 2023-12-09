@@ -15,6 +15,11 @@ export default function MessageInterface(this: any, props: messPropsType) {
 			.then((response) => response.json())
 			.then((data) => {
 				setMessgs(data[0].data);
+
+				let chat = document.getElementById("chat");
+				if (chat !== null) {
+					chat.scrollTop = chat.scrollHeight;
+				}
 				setLoading(false);
 			});
 	}, [isLoading]);
@@ -25,7 +30,6 @@ export default function MessageInterface(this: any, props: messPropsType) {
 		event: React.FormEvent
 	): Promise<React.FormEventHandler<HTMLFormElement> | undefined> {
 		setLoading(true);
-
 		const response = await fetch(
 			"/api/openai?prompt=" + inputPrompt + "&chatID=" + props.chatID,
 			{
@@ -34,6 +38,7 @@ export default function MessageInterface(this: any, props: messPropsType) {
 			}
 		);
 		if (response.status === 200) {
+			setLoading(true);
 			setMessgs([]);
 			// setLoading(false);
 		}
