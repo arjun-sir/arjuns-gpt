@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(request: { url: string | URL }) {
+export async function GET(request: any) {
 	const requestUrl = new URL(request.url);
 	const code = requestUrl.searchParams.get("code");
 
