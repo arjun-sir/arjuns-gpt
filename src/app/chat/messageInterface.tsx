@@ -12,7 +12,9 @@ export default function MessageInterface(this: any, props: messPropsType) {
 	const [isLoading, setLoading] = useState<any>(true);
 
 	useEffect(() => {
-		fetch("/api/getMessages?chatID=" + props.chatID)
+		fetch("/api/getMessages?chatID=" + props.chatID, {
+			cache: "force-cache",
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				setMessgs(data[0].data);
